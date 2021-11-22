@@ -1,59 +1,64 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('layouts.app')
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+@section('content')
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <li class="text-danger">{{ $error }}</li>
+        @endforeach
+    @endif
 
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
 
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card-body p-5 text-center">
+
+                <div class="mb-md-5 mt-md-4 pb-5">
+                    <h2 class="fw-bold mb-4 text-uppercase">Зарегеструватися</h2>
+
+                    <form method="POST" action="{{ route('register') }}">
+                        @csrf
+
+                        <div class="form-outline form-white mb-4">
+                            <input type="text" name="name" id="typeEmailX" class="form-control form-control-lg" value="{{ old('name') }}">
+                            <label class="form-label" for="typeEmailX" style="margin-left: 0px;">Імʼя</label>
+                            <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 40px;"></div><div class="form-notch-trailing"></div></div>
+                        </div>
+
+                        <div class="form-outline form-white mb-4">
+                            <input type="email" name="email" id="typeEmailX" class="form-control form-control-lg" value="{{ old('email') }}">
+                            <label class="form-label" for="typeEmailX" style="margin-left: 0px;">Email</label>
+                            <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 40px;"></div><div class="form-notch-trailing"></div></div>
+                        </div>
+
+                        <div class="form-outline form-white mb-4">
+                            <input type="password" name="password" id="typePasswordX" class="form-control form-control-lg" value="{{ old('password') }}">
+                            <label class="form-label" for="typePasswordX" style="margin-left: 0px;">Пароль</label>
+                            <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 64px;"></div><div class="form-notch-trailing"></div></div>
+                        </div>
+
+                        <div class="form-outline form-white mb-4">
+                            <input type="password" name="password_confirmation" id="typePassword" class="form-control form-control-lg" value="{{ old('password_confirmation') }}">
+                            <label class="form-label" for="typePassword" style="margin-left: 0px;">Підтвердіть пароль</label>
+                            <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 64px;"></div><div class="form-notch-trailing"></div></div>
+                        </div>
+
+                        <button class="btn btn-outline-dark btn-lg px-5" type="submit">Зарегеструватися</button>
+
+                        <div class="d-flex justify-content-center text-center mt-4 pt-1">
+                            <a href="#!" class=""><i class="fab fa-facebook-f fa-lg"></i></a>
+                            <a href="#!" class=""><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
+                            <a href="#!" class=""><i class="fab fa-google fa-lg"></i></a>
+                        </div>
+                    </form>
+                </div>
+
+                <div>
+                    <p class="mb-0">Є аккаунта? <a href="{{ route('register') }}" class=" fw-bold">Увійти</a></p>
+                </div>
+
             </div>
+        </div>
+    </div>
+@endsection
 
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>

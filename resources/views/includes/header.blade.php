@@ -48,5 +48,15 @@
             </ul>
         </div>
 
+        @auth()
+            <span style="margin-right: 1em">{{ Auth::user()->name }}</span>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Вийти</button>
+            </form>
+        @else
+            <a href="{{ route('login') }}" class="btn btn-outline-dark my-2 my-sm-0" type="submit">Увійти</a>
+        @endif
+
     </div>
 </nav>
