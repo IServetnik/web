@@ -21,8 +21,8 @@ class PageSeeder extends Seeder
         Page::create(['name' => 'players', 'category_id' => $hockey->id]);
 
         $boxing = PageCategory::where('name', 'boxing')->firstOrFail();
-        Page::create(['name' => 'games', 'category_id' => $boxing->id]);
-        Page::create(['name' => 'teams', 'category_id' => $boxing->id]);
+        Page::create(['name' => 'fighters', 'category_id' => $boxing->id]);
+        Page::create(['name' => 'fights', 'category_id' => $boxing->id]);
         Page::create(['name' => 'weights', 'category_id' => $boxing->id]);
     }
 }

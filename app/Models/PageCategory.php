@@ -9,7 +9,15 @@ class PageCategory extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
         'name',
     ];
+
+
+
+    public function pages()
+    {
+        return $this->hasMany(Page::class, 'category_id');
+    }
 }
