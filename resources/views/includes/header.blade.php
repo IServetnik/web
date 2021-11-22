@@ -45,6 +45,10 @@
                         <li><a class="dropdown-item" href="{{ route('pages.index', ['pageCategory' => 'boxing', 'page' => 'weights']) }}">Вагові категорії</a></li>
                     </ul>
                 </li>
+
+                <li class="nav-item dropdown">
+                    <div id="time" class="nav-link ml-3">{{ now()->format('Y-m-d H:s') }}</div>
+                </li>
             </ul>
         </div>
 
