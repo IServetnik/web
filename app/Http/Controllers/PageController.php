@@ -9,6 +9,6 @@ class PageController extends Controller
 {
     public function index(PageCategory $pageCategory, Page $page)
     {
-        return view("{$pageCategory->name}.{$page->name}");
+        return view("{$pageCategory->name}.{$page->name}", compact('pageCategory', 'page'));
     }
 }

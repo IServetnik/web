@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
             UserObserver::class,
             PageCategorySeeder::class,
             PageSeeder::class,
+            CommentSeeder::class,
         ]);
     }
 }
