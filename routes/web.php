@@ -8,8 +8,8 @@ require __DIR__.'/auth.php';
 
 
 
-Route::view('/', 'main');
+Route::view('/', 'main')->name('main');
 
 Route::prefix('{pageCategory:name}')->group(function () {
-    Route::get('{page:name}', 'PageController@index');
+    Route::get('{page:name}', 'PageController@index')->name('pages.index');
 });
