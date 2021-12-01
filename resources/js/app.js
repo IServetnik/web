@@ -1,5 +1,6 @@
 require('./bootstrap');
 require('./time');
+require('./ratings');
 
 import Alpine from 'alpinejs';
 

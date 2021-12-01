@@ -42,7 +42,7 @@
                 </div>
 
                 <div>
-                    <p class="mb-0">Немає аккаунта? <a href="{{ route('register') }}" class=" fw-bold">Зарегеструватися</a></p>
+                    <p class="mb-0">Немає аккаунта? <a href="{{ route('register') }}" class=" fw-bold">Зареєструватися</a></p>
                 </div>
 
             </div>

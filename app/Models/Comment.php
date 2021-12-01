@@ -20,4 +20,14 @@ class Comment extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function likes()
+    {
+        return $this->hasMany(Rating::class)->where('type', 'like');
+    }
+
+    public function dislikes()
+    {
+        return $this->hasMany(Rating::class)->where('type', 'dislike');
+    }
 }

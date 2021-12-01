@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
             PageCategorySeeder::class,
             PageSeeder::class,
             CommentSeeder::class,
+            RatingSeeder::class,
         ]);
     }
 }

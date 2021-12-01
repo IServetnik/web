@@ -14,6 +14,15 @@ Route::prefix('{pageCategory:name}')->group(function () {
     Route::get('{page:name}', 'PageController@index')->name('pages.index');
 });
 
-Route::prefix('{page}')->group(function () {
-    Route::post('comments', 'CommentController@store')->middleware('auth')->name('comments.store');
+Route::middleware('auth')->group(function () {
+
+    Route::prefix('{page}')->group(function () {
+        Route::post('comments', 'CommentController@store')->name('comments.store');
+    });
+
+    Route::prefix('{comment}/ratings')->group(function () {
+        Route::post('like', 'RatingController@like')->name('ratings.like');
+        Route::post('dislike', 'RatingController@dislike')->name('ratings.dislike');
+    });
+
 });
