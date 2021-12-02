@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Page;
-use App\Models\PageCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 class EmployeeController extends Controller
 {
-    public function index(PageCategory $pageCategory, Page $page)
+    public function index()
     {
         return view('employees');
     }

@@ -21,6 +21,11 @@ class Comment extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function page()
+    {
+        return $this->belongsTo(Page::class);
+    }
+
     public function likes()
     {
         return $this->hasMany(Rating::class)->where('type', 'like');

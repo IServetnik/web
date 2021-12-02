@@ -27,4 +27,6 @@ Route::middleware('auth')->group(function () {
 
 });
 
+Route::get('partners', 'PartnerController@index')->name('partners.index');
+Route::get('comments', 'CommentController@index')->name('comments.index');
 Route::get('employees', 'EmployeeController@index')->name('employees');

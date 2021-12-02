@@ -50,6 +50,16 @@
                     <a class="nav-link" href="{{ route('employees') }}">Працівники</a>
                 </li>
 
+                @auth()
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('comments.index') }}">Коментарі</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('partners.index') }}">Партнери</a>
+                    </li>
+                @endauth
+
                 <li class="nav-item dropdown">
                     <div id="time" class="nav-link ml-3">{{ now()->format('Y-m-d H:s') }}</div>
                 </li>
