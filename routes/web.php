@@ -26,3 +26,5 @@ Route::middleware('auth')->group(function () {
     });
 
 });
+
+Route::view('employees', 'employees')->name('employees');

@@ -12,16 +12,14 @@
     <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
 
     <title>{{ config('app.name') }}</title>
 </head>
 
 <body>
-
     @include('includes.header')
 
-    <div class="container mt-5">
+    <div class="container mt-5" id="app">
         @yield('content')
     </div>
 
@@ -29,4 +27,6 @@
         <x-comments :page="$page"></x-comments>
     @endisset
 </body>
+
+<script src="{{ asset('js/app.js') }}"></script>
 </html>

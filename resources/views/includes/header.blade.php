@@ -46,6 +46,10 @@
                     </ul>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('employees') }}">Працівники</a>
+                </li>
+
                 <li class="nav-item dropdown">
                     <div id="time" class="nav-link ml-3">{{ now()->format('Y-m-d H:s') }}</div>
                 </li>

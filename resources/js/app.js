@@ -2,8 +2,12 @@ require('./bootstrap');
 require('./time');
 require('./ratings');
 
-import Alpine from 'alpinejs';
+window.Vue = require('vue').default;
 
-window.Alpine = Alpine;
 
-Alpine.start();
+Vue.component('employees-component', require('./components/EmployeesComponent.vue').default);
+
+
+const app = new Vue({
+    el: '#app',
+});
