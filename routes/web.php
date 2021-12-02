@@ -27,4 +27,4 @@ Route::middleware('auth')->group(function () {
 
 });
 
-Route::view('employees', 'employees')->name('employees');
+Route::get('employees', 'EmployeeController@index')->name('employees');

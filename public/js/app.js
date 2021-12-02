@@ -5265,41 +5265,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      users: [],
+      sortBy: ''
+    };
+  },
   mounted: function mounted() {
+    var searchParams = new URLSearchParams(window.location.search);
+    this.sortBy = searchParams.get('sortBy');
     this.getUsers();
   },
   methods: {
     getUsers: function getUsers() {
-      // $.ajax({
-      //     url: 'https://github.com/AxolotlAPI/data',
-      //     dataType: "jsonp",
-      //     cache: false,
-      //     crossDomain: true,
-      //
-      //     success: function( response ) {
-      //         console.log( response ); // server response
-      //     },
-      //     error: function(error){
-      //         alert(123);
-      //         console.log(error);
-      //     }
-      //
-      // });
+      var users = [];
+      window.history.replaceState(null, null, "?sortBy=" + this.sortBy);
       $.ajax({
-        url: 'http://lab.vntu.org/webusers/api-server/lab7.php',
-        dataType: 'jsonp',
+        url: 'api/employees?sortBy=' + this.sortBy,
         type: 'GET',
-        contentType: "application/json",
-        crossDomain: true,
-        success: function success() {
-          alert("Success");
-        },
-        error: function error(_error) {
-          alert('Failed!');
-          console.log(_error);
+        async: false,
+        success: function success(data) {
+          users = data;
         }
       });
+      this.users = users;
     }
   }
 });
@@ -27978,36 +27980,94 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("div", { staticClass: "input-group mb-3" }, [
+      _c(
+        "select",
+        {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.sortBy,
+              expression: "sortBy",
+            },
+          ],
+          staticClass: "form-select",
+          on: {
+            change: function ($event) {
+              var $$selectedVal = Array.prototype.filter
+                .call($event.target.options, function (o) {
+                  return o.selected
+                })
+                .map(function (o) {
+                  var val = "_value" in o ? o._value : o.value
+                  return val
+                })
+              _vm.sortBy = $event.target.multiple
+                ? $$selectedVal
+                : $$selectedVal[0]
+            },
+          },
+        },
+        [
+          _c("option", { attrs: { selected: "" } }, [_vm._v("Сортування")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "name" } }, [_vm._v("Ім'я")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "affiliation" } }, [
+            _vm._v("Приналежність"),
+          ]),
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "input-group-text", on: { click: _vm.getUsers } },
+        [_vm._v("Оновити")]
+      ),
+    ]),
+    _vm._v(" "),
+    _c(
+      "table",
+      { staticClass: "table mt-5", attrs: { id: "table" } },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._l(_vm.users, function (user) {
+          return _c("tbody", [
+            _c("tr", [
+              _c("th", { attrs: { scope: "row" } }, [
+                _vm._v(_vm._s(user.name)),
+              ]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(user.affiliation))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(user.rank))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(user.location))]),
+            ]),
+          ])
+        }),
+      ],
+      2
+    ),
+  ])
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("table", { staticClass: "table mt-5", attrs: { id: "table" } }, [
-      _c("thead", [
-        _c("tr", [
-          _c("th", { attrs: { scope: "col" } }, [_vm._v("Ім'я")]),
-          _vm._v(" "),
-          _c("th", { attrs: { scope: "col" } }, [_vm._v("Приналежність")]),
-          _vm._v(" "),
-          _c("th", { attrs: { scope: "col" } }, [_vm._v("Звання")]),
-          _vm._v(" "),
-          _c("th", { attrs: { scope: "col" } }, [_vm._v("Розташування")]),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("tbody", [
-        _c("tr", [
-          _c("th", { attrs: { scope: "row" } }, [_vm._v("1")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("Важка вага")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("90,72+")]),
-          _vm._v(" "),
-          _c("td", [_vm._v("200+")]),
-        ]),
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Ім'я")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Приналежність")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Звання")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Розташування")]),
       ]),
     ])
   },
