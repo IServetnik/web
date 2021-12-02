@@ -2,7 +2,7 @@
     <div>
         <div class="input-group mb-3">
             <select class="form-select" v-model="sortBy">
-                <option selected>Сортування</option>
+                <option value="" selected>Сортування</option>
                 <option value="name">Ім'я</option>
                 <option value="affiliation">Приналежність</option>
             </select>
@@ -43,7 +43,7 @@
 
         mounted() {
             let searchParams = new URLSearchParams(window.location.search)
-            this.sortBy = searchParams.get('sortBy');
+            this.sortBy = searchParams.get('sortBy') ?? '';
 
             this.getUsers();
         },

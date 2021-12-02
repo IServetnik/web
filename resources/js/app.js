@@ -1,4 +1,3 @@
-require('./bootstrap');
 require('./time');
 require('./ratings');
 
